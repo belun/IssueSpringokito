@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kubek2k.springockito.annotations.ReplaceWithMock;
 import org.kubek2k.springockito.annotations.SpringockitoContextLoader;
-import org.mockito.Mockito;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,12 +17,12 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = SpringockitoContextLoader.class,
-        locations = { "classpath:/main-context.xml"/*, "classpath:/mock-context.xml"*/ })
+        locations = { "classpath:/main-context.xml", "classpath:/mock-context.xml" })
 public class FeatureTest {
 
-    //@Autowired
-    //@Qualifier(value = "collaborator")
-    @ReplaceWithMock(name = "collaborator")
+    @Autowired
+    @Qualifier(value = "collaborator")
+    //@ReplaceWithMock(name = "collaborator")
     private Collaborator mockedCollaborator;
 
     @Autowired
